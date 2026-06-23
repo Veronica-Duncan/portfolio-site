@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Starry Night CV with Professional Footer</title>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght=300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<style>
+		/* Base & Reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Josefin Sans', sans-serif;
+			background-color: #030611;
+			color: #e0e6ed;
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Deep Cosmic Background Gradient */
+		.night-sky {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -2;
+			background: radial-gradient(circle at 80% 20%, #0d1b2a 0%, #050814 60%, #020308 100%);
+		}
+
+		/* Celestial Rotation Container */
+		.star-field {
+			position: fixed;
+			top: -50vh;
+			left: -50vw;
+			width: 200vw;
+			height: 200vh;
+			z-index: -1;
+			animation: celestialDrift 400s linear infinite;
+			transform-origin: center center;
+		}
+
+		/* Star Base Styles */
+		.stars-small {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			background: transparent;
+			animation: twinkleSlow 4s ease-in-out infinite alternate;
+		}
+
+		.stars-medium {
+			position: absolute;
+			width: 2px;
+			height: 2px;
+			background: transparent;
+			animation: twinkleMedium 3s ease-in-out infinite alternate 1s;
+		}
+
+		.stars-bright {
+			position: absolute;
+			width: 3px;
+			height: 3px;
+			background: transparent;
+			border-radius: 50%;
+			animation: twinkleFast 2s ease-in-out infinite alternate;
+		}
+
+		/* Celestial Motion Animation */
+		@keyframes celestialDrift {
+			from {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* Twinkle Animation Speeds */
+		@keyframes twinkleSlow {
+			0%, 100% {
+				opacity: 0.15;
+			}
+
+			50% {
+				opacity: 0.85;
+			}
+		}
+
+		@keyframes twinkleMedium {
+			0%, 100% {
+				opacity: 0.2;
+			}
+
+			40% {
+				opacity: 0.9;
+			}
+
+			70% {
+				opacity: 0.3;
+			}
+		}
+
+		@keyframes twinkleFast {
+			0%, 100% {
+				opacity: 0.2;
+			}
+
+			50% {
+				opacity: 1;
+			}
+		}
+
+		/* Layout Container */
+		.container {
+			max-width: 1140px;
+			margin: 0 auto;
+			padding: 40px 20px 60px 20px;
+		}
+
+		/* Hero / Header Section */
+		.hero {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 80px;
+			flex-wrap: wrap;
+			gap: 30px;
+		}
+
+		.hero-text h1 {
+			font-size: 3.5rem;
+			font-weight: 700;
+			color: #ffffff;
+			margin-bottom: 10px;
+			letter-spacing: 1px;
+		}
+
+			.hero-text h1 span {
+				color: #ffdf85;
+				text-shadow: 0 0 15px rgba(255, 223, 133, 0.4);
+			}
+
+		.hero-text p {
+			font-size: 1.2rem;
+			color: #a0aec0;
+			font-weight: 300;
+			max-width: 400px;
+		}
+
+		/* Moon Lamp Replica */
+		.lamp-wrapper {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.crescent-moon {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			background: transparent;
+			box-shadow: inset -25px 5px 0 0px #ffdf85, 0px 0px 80px 20px rgba(255, 223, 133, 0.2);
+			transform: rotate(-15deg);
+			z-index: 2;
+			animation: pulseGlow 4s infinite alternate;
+		}
+
+		@keyframes pulseGlow {
+			0% {
+				box-shadow: inset -25px 5px 0 0px #ffdf85, 0px 0px 60px 10px rgba(255, 223, 133, 0.15);
+			}
+
+			100% {
+				box-shadow: inset -25px 5px 0 0px #ffdf85, 0px 0px 90px 25px rgba(255, 223, 133, 0.35);
+			}
+		}
+
+		.lamp-base {
+			width: 70px;
+			height: 20px;
+			background: #3a251a;
+			border-radius: 10px 10px 4px 4px;
+			margin-top: 15px;
+			position: relative;
+			z-index: 1;
+			box-shadow: inset 0 5px 10px rgba(255, 223, 133, 0.2), 0 4px 10px rgba(0,0,0,0.5);
+		}
+
+		/* CV Grid Sections */
+		.cv-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+			margin-bottom: 80px;
+		}
+
+		.section-title {
+			font-size: 1.8rem;
+			margin-bottom: 30px;
+			color: #ffdf85;
+			border-bottom: 1px solid rgba(255, 223, 133, 0.2);
+			padding-bottom: 10px;
+			display: inline-block;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.02);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			border-radius: 15px;
+			padding: 25px;
+			transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+		}
+
+			.card:hover {
+				transform: translateY(-5px);
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 223, 133, 0.2);
+			}
+
+			.card h3 {
+				font-size: 1.3rem;
+				color: #ffffff;
+				margin-bottom: 5px;
+			}
+
+			.card .date {
+				font-size: 0.9rem;
+				color: #ffdf85;
+				margin-bottom: 15px;
+				font-weight: 300;
+			}
+
+			.card p {
+				color: #a0aec0;
+				font-size: 0.95rem;
+			}
+
+		/* --- Black Solid Asymmetric Footer Layout --- */
+		.site-footer {
+			background: #02040a; /* Deep matte black background */
+			border-top: 1px solid rgba(255, 255, 255, 0.05);
+			padding: 60px 0;
+			width: 100vw;
+			position: relative;
+			left: 50%;
+			right: 50%;
+			margin-left: -50vw;
+			margin-right: -50vw;
+		}
+
+		.footer-layout {
+			max-width: 1140px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 30px;
+		}
+
+		/* Left Content Area */
+		.footer-left {
+			max-width: 500px;
+		}
+
+			.footer-left p {
+				font-size: 0.95rem;
+				color: #a0aec0;
+				margin-bottom: 20px;
+			}
+
+				.footer-left p span {
+					color: #ffdf85;
+				}
+
+		/* Social Icons Link Row */
+		.social-links {
+			display: flex;
+			gap: 15px;
+		}
+
+		.social-icon {
+			color: #e0e6ed;
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			font-size: 1.1rem;
+			transition: all 0.3s ease;
+		}
+
+			.social-icon:hover {
+				color: #030611;
+				background: #ffdf85;
+				border-color: #ffdf85;
+				transform: translateY(-3px);
+				box-shadow: 0 5px 15px rgba(255, 223, 133, 0.3);
+			}
+
+		/* Keep the X slightly bolder so it visually matches the weight of FontAwesome icons */
+		.social-icon-x {
+			font-weight: 700;
+			font-family: sans-serif;
+		}
+
+		/* Right Content Area (Download Button) */
+		.footer-right {
+			display: flex;
+			align-items: center;
+		}
+
+		.download-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			background: transparent;
+			border: 2px solid #ffdf85;
+			color: #ffdf85;
+			padding: 14px 28px;
+			font-size: 1rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			border-radius: 30px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+			.download-btn:hover {
+				background: #ffdf85;
+				color: #030611;
+				transform: translateY(-3px);
+				box-shadow: 0 8px 20px rgba(255, 223, 133, 0.25);
+			}
+
+		/* Responsive Configuration */
+		@media(max-width: 768px) {
+			.cv-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.hero {
+				justify-content: center;
+				text-align: center;
+			}
+
+			.footer-layout {
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.social-links {
+				justify-content: center;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="night-sky"></div>
+
+	<div class="star-field">
+		<div class="stars-small"></div>
+		<div class="stars-medium"></div>
+		<div class="stars-bright"></div>
+	</div>
+
+	<div class="container">
+		<header class="hero">
+			<div class="hero-text">
+				<h1>Hello, I am <br><span>Your Name</span></h1>
+				<p>A creative developer and designer turning ideas into glowing digital experiences.</p>
+			</div>
+
+			<div class="lamp-wrapper">
+				<div class="crescent-moon"></div>
+				<div class="lamp-base"></div>
+			</div>
+		</header>
+
+		<div class="cv-grid">
+			<section>
+				<h2 class="section-title">Experience</h2>
+				<div class="card" style="margin-bottom: 20px;">
+					<h3>Senior UI/UX Designer</h3>
+					<div class="date">Starlight Studios | 2023 - Present</div>
+					<p>Lead the design of intuitive, dark-mode-first interfaces. Improved user retention by 40% through ambient design principles.</p>
+				</div>
+				<div class="card">
+					<h3>Frontend Developer</h3>
+					<div class="date">Nebula Tech | 2020 - 2023</div>
+					<p>Developed responsive web applications using modern CSS and JavaScript frameworks.</p>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="card" style="margin-bottom: 20px;">
+					<h3>Master of Interaction Design</h3>
+					<div class="date">University of Design | 2018 - 2020</div>
+					<p>Specialized in digital aesthetics and user psychology in low-light digital environments.</p>
+				</div>
+				<div class="card">
+					<h3>Bachelor of Computer Science</h3>
+					<div class="date">Tech Institute | 2014 - 2018</div>
+					<p>Focused on web technologies, graphic computing, and software architecture.</p>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<footer class="site-footer">
+		<div class="footer-layout">
+
+			<div class="footer-left">
+				<p>Copyright ©2026 All rights reserved. Built with passion turning ideas into custom digital experiences. Designed by <span>Your Name</span>.</p>
+
+				<div class="social-links">
+					<a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+					<a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+					<a href="#" class="social-icon social-icon-x" aria-label="Twitter">𝕏</a>
+					<a href="#" class="social-icon" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+				</div>
+			</div>
+
+			<div class="footer-right">
+				<a href="path-to-your-resume.pdf" class="download-btn" download>
+					Download CV <i class="fas fa-download" style="margin-left: 5px;"></i>
+				</a>
+			</div>
+
+		</div>
+	</footer>
+
+	<script>
+		function generateStars(count, className) {
+		let shadows = '';
+		for(let i = 0; i < count; i++) {
+		let x = Math.floor(Math.random() * 200);
+		let y = Math.floor(Math.random() * 200);
+		let colors = ['#ffffff', '#ffffff', '#e0e6ed', '#ffdf85', '#adbfd6'];
+		let color = colors[Math.floor(Math.random() * colors.length)];
+
+		shadows += `${x}vw ${y}vh ${color}`;
+		if(i < count - 1) shadows += ', ';
+		}
+		document.querySelector(className).style.boxShadow = shadows;
+		}
+
+		// Generate stars
+		generateStars(500, '.stars-small');
+		generateStars(150, '.stars-medium');
+		generateStars(50, '.stars-bright');
+	</script>
+
+</body>
+</html>
